@@ -4,7 +4,6 @@
     <ul>
       <li><a href="/">Inicio</a></li>
       <li><a href="/products">Productos</a></li>
-      <li><a href="/dashboard">Dashboard</a></li>
     </ul>
   </nav>
 </template>
