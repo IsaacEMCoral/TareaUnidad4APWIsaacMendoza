@@ -1,8 +1,6 @@
 # MercApp
 
-## Autor
 - **Nombre del estudiante:** Isaac Mendoza
-- **Proyecto:** MercApp
 
 ## Funcionalidades implementadas
 - **CRUD de productos**:
