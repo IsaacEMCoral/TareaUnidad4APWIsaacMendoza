@@ -34,4 +34,3 @@ defineProps({
   color: #721c24;
 }
 </style>
-
