@@ -5,11 +5,9 @@
     <main>
       <h1>MercApp Frontend</h1>
 
-      <!-- Botón de prueba de conexión API -->
       <button @click="checkHealth">Probar conexión API</button>
       <pre>{{ health }}</pre>
 
-      <!-- Lista de productos -->
       <ProductList />
     </main>
 
