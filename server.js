@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
+const cors = require('cors');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const http = require('http');
@@ -27,6 +28,10 @@ const PORT = process.env.PORT || 3000;
   app.use(morgan('dev'));
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
+  app.use(cors({
+    origin: process.env.FRONTEND_URL || '*',
+    credentials: true
+  }));
   app.use(express.static(path.join(__dirname, 'public')));
 
   app.use(session({
@@ -44,6 +49,10 @@ const PORT = process.env.PORT || 3000;
       res.locals.user = null;
     }
     next();
+  });
+
+  app.get('/health', (req, res) => {
+    res.json({ status: 'ok', uptime: process.uptime() });
   });
 
   const authRoutes = require('./routes/auth');
@@ -70,5 +79,5 @@ const PORT = process.env.PORT || 3000;
     socket.on('disconnect', () => console.log('Socket desconectado', socket.id));
   });
 
-  server.listen(PORT, () => console.log(`Servidor escuchando en http://localhost:${PORT}`));
+  server.listen(PORT, () => console.log(`Servidor escuchando en puerto http://localhost:${PORT}`));
 })();
